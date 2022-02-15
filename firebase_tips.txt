@@ -1,0 +1,61 @@
+Use notification messages when you want FCM to handle displaying a notification on your client app's behalf.
+Use data messages when you want to process the messages on your client app.
+
+Notification messages
+------------------
+To programmatically send notification messages using the Admin SDK or the FCM protocols,
+set the notification key with the necessary predefined set of key-value options for the user-visible part of the notification message.
+
+Example;
+
+{
+  "message":{
+    "token":"bk3RNwTe3H0:CI2k_HHwgIpoDKCIZvvDMExUdFQ3P1...",
+    "notification":{
+      "title":"Portugal vs. Denmark",
+      "body":"great match!"
+    }
+  }
+}
+
+Notification messages are delivered to the notification tray when the app is in the background.
+For apps in the foreground, messages are handled by a callback function.
+
+
+
+Data messages
+------------------
+Set the appropriate key with your custom key-value pairs to send a data payload to the client app.
+here is a JSON-formatted message in the same IM app as above,
+where the information is encapsulated in the common data key and the client app is expected to interpret the content:
+{
+  "message":{
+    "token":"bk3RNwTe3H0:CI2k_HHwgIpoDKCIZvvDMExUdFQ3P1...",
+    "data":{
+      "Nick" : "Mario",
+      "body" : "great match!",
+      "Room" : "PortugalVSDenmark"
+    }
+  }
+}
+
+
+
+Notification messages with optional data payload
+------------------------------------------------
+{
+  "message":{
+    "token":"bk3RNwTe3H0:CI2k_HHwgIpoDKCIZvvDMExUdFQ3P1...",
+    "notification":{
+      "title":"Portugal vs. Denmark",
+      "body":"great match!"
+    },
+    "data" : {
+      "Nick" : "Mario",
+      "Room" : "PortugalVSDenmark"
+    }
+  }
+}
+
+When in the background, apps receive the notification payload in the notification tray, and only handle the data payload when the user taps on the notification.
+When in the foreground, your app receives a message object with both payloads available.

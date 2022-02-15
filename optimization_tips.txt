@@ -1,0 +1,7 @@
+CHECK SPEED OF WEBSITE USING GOOGLE
+https://developers.google.com/speed/
+TIPS TO INCREASE SPEED OF WEBSITE
+https://belitsoft.com/blog/laravel-cache-and-business-profits
+
+IMPROVE PERFORMANCE OF PHP site
+https://belitsoft.com/php-development-services/improve-perfomance-php-website

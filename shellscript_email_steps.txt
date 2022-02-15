@@ -1,0 +1,66 @@
+INSTALL
+sudo apt install mailutils
+
+A new window is opened, we need to select "Internet services" and add "equipohealth.com" when we are prompted
+
+EDIT
+sudo vi /etc/postfix/main.cf
+
+-------------------------MODIFY CONTENTS OF FILE AS BELOW-------------------------------------------------------
+myhostname = localhost
+mydestination = $myhostname,localhost.$mydomain,ip-172-31-20-197.us-west-2.compute.internal, localhost.us-west-2.compute.internal, localhost
+inet_interfaces = loopback-only
+inet_protocols = ipv4
+-------------------------MODIFICATION OF CONTENT ENDS-------------------------------------------------
+RESTART POSTFIX
+sudo systemctl restart postfix or sudo /etc/init.d/postfix restart
+
+TEST USING TERMINAL
+mail -s "Alert: Almost out of disk space" nitin.gopi@equipohealth.com
+
+CHECK LOGS
+vi /var/log/mail.log
+
+CREATE SHELL SCRIPT FILE
+sudo vi disk_usage.sh
+
+----------------------------CONTENT OF FILE(disk_usage.sh) BEGINS----------------------------------------------------
+#!/bin/sh
+# Shell script to monitor or watch the disk space
+# It will send an email to $ADMIN, if the (free avilable) percentage
+# of space is >= 90%
+# -------------------------------------------------------------------------
+# Copyright (c) 2005 nixCraft project <http://cyberciti.biz/fb/>
+# This script is licensed under GNU GPL version 2.0 or above
+# -------------------------------------------------------------------------
+# This script is part of nixCraft shell script collection (NSSC)
+# Visit http://bash.cyberciti.biz/ for more information.
+# ----------------------------------------------------------------------
+# Linux shell script to watch disk space (should work on other UNIX oses )
+# SEE URL: http://www.cyberciti.biz/tips/shell-script-to-watch-the-disk-space.html
+# set admin email so that you can get email
+receiver="nitin.gopi@equipohealth.com"
+sender="noreply@equipohealth.com"
+# set alert level 90% is default
+ALERT=80
+df -H | grep -vE '^Filesystem|udev|tmpfs|loop|cdrom' | awk '{ print $5 " " $1 }' | while read output;
+do
+  #echo $output
+  usep=$(echo $output | awk '{ print $1}' | cut -d'%' -f1  )
+  partition=$(echo $output | awk '{ print $2 }' )
+  if [ $usep -ge $ALERT ]; then
+    echo "Running out of space \"$partition ($usep%)\" on $(hostname) as on $(date)" |
+     mail -s "Alert: Almost out of disk space $usep%" -r "$sender"  $receiver
+  fi
+done
+
+-------------------------------CONTENT OF FILE ENDS-------------------------------------------------
+
+
+REFERENCES
+https://linux.die.net/man/1/mail
+https://www.interserver.net/tips/kb/linux-mail-command-usage-examples/
+https://www.binarytides.com/linux-mail-command-examples/
+https://tecadmin.net/ways-to-send-email-from-linux-command-line/
+https://linuxhint.com/bash_script_send_email/
+https://www.cyberciti.biz/tips/shell-script-to-watch-the-disk-space.html

@@ -1,0 +1,11 @@
+HOW TO INSTALL NODE
+--INSTALL NVM (https://github.com/nvm-sh/nvm)
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+VERIFY
+command -v nvm
+INSTALL NODE
+nvm install node (LATEST VERSION)
+nvm install 6.14.4 # or 10.10.0, 8.9.1, etc (SPECIFIC VERSION)
+USE THE INSTALLED VERSION
+nvm use node
+nvm run node --version

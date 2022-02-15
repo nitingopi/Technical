@@ -1,0 +1,38 @@
+UPDATE AND UPGRADE UBUNTU
+
+sudo apt update
+sudo apt upgrade
+sudo apt dist-upgrade
+sudo do-release-upgrade
+
+LIST ALL FILES WITH SIZE AND OTHER DETAILS
+ls -lh
+
+ONLY ONE FILE
+ls -lh <filename>
+
+GIVE READ,WRITE,EXECUTE ACCESS TO ALL USERS (FILE)
+sudo chmod a+rwx /path/to/file
+
+GIVE READ,WRITE,EXECUTE ACCESS TO ALL USERS (FOLDER AND ALL FILES INSIDE IT)
+sudo chmod -R a+rwx /path/to/folder
+
+HOW TO KNOW USERNAME
+whoami
+
+KNOW TO WHICH GROUPS A USER BELONGS
+groups <username>
+
+HOW TO MAKE A USERNAME OWNER OF A FOLDER
+sudo chown user_name folder_name
+
+CHECK FOLDER PERIMISSIONS
+https://help.ubuntu.com/community/FilePermissions
+
+INSTALL SKYPE ON UBUNTU
+wget https://go.skype.com/skypeforlinux-64.deb
+sudo apt install ./skypeforlinux-64.deb
+
+INSTALL ZOOM IN UBUNTU
+sudo apt-get install libxcb-xtest0
+https://www.programsbuzz.com/article/how-install-zoom-ubuntu-1604

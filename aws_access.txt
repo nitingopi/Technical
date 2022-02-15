@@ -1,0 +1,15 @@
+INSTALL AWS CLI IN UBUNTU
+pip install awscli
+
+INSTALL BOTO3 IN PYTHON
+pip install boto3
+
+SET UP AWS CLI TO INTERACT WITH AWS SERVICES
+aws configure
+
+ACCESS KEYS (ACCESS KEY ID AND SECRET ACCESS KEY )
+-access keys required to have programmatic access to aws.
+-
+
+LOCATION WHERE THE CONFIGURATION FILE PRESENT
+~/.aws/credentials

@@ -1,0 +1,37 @@
+ACTIVATE VIRTUAL ENVIRONMENT
+(base) nitin@nitin-Latitude-3490:~/PythonWS/task1$ source venv/bin/activate
+AFTER ACTIVATION
+(venv) (base) nitin@nitin-Latitude-3490:~/PythonWS/task1$ python server1.py
+
+
+INSTALLING OLDER VERSION OF PYTHON
+https://help.dreamhost.com/hc/en-us/articles/215489338-Installing-and-using-virtualenv-with-Python-2
+1. wget http://www.python.org/ftp/python/2.7.15/Python-2.7.15.tgz
+2. tar zxvf Python-2.7.15.tgz
+3. cd Python-2.7.15
+4. ./configure --prefix=$HOME/opt/python-2.7.15 --with-ensurepip=install
+5. make
+6. make install
+7. CREATE VIRTUAL ENVIRONMENT
+virtualenv -p /home/username/opt/python-2.7.15/bin/python my_project
+IF BELOW ERROR COMES --
+import zlib
+ImportError: No module named zlib
+INSTALL THE LIBRARY --
+sudo apt-get install zlib1g-dev
+REPEAT STEPS (6,7)
+
+AUTHENTICATING REST API IN PYTHON FLASK
+1. HTTP basic authentication
+-- Based on username, password
+-- Server stores username and password (possibly db)
+-- client sends username, password along with request
+-- Server authenticates the user with username and password
+--- If it is correct, then the client is provided with result
+-- Library used --> pip install Flask-HTTPAuth
+-- Link --> http://polyglot.ninja/securing-rest-apis-basic-http-authentication-python-flask/
+
+
+
+GOOD LINKS
+https://www.fullstackpython.com/wsgi-servers.html

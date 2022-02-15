@@ -1,0 +1,27 @@
+If you'd prefer that conda's base environment not be activated on startup,
+   set the auto_activate_base parameter to false:
+
+conda config --set auto_activate_base false
+--------------------------------------------------------------------------------
+
+CHECK CONDA VERSION
+conda -V
+
+UPDATE CONDA
+conda update conda
+
+CREATE VIRTUAL ENVIRONMENT
+conda create -n <name> anaconda
+
+ACTIVATE THE VIRTUAL ENVIRONMENT
+source activate <name>
+
+
+INSTALL packages FROM FILE
+while read requirement; do conda install --yes $requirement; done < requirements.txt
+
+MODIFY THE POLICY FILE TO ALLOW ACCESS ON PDF -> TIFF CONVERSION
+/etc/ImageMagick-6/policy.xml
+
+GET HARD DISK INFO
+https://stackoverflow.com/questions/48929553/get-hard-disk-size-in-python
